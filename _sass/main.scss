@@ -1,0 +1,1602 @@
+@charset "utf-8";
+
+// Customization
+
+// You can easily customize Bulma with your own variables.
+// Just uncomment the following block to see the result.
+
+/*
+// 1. Import the initial variables
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+// 2. Set your own initial variables
+// Update the blue shade, used for links
+$blue: #06bcef;
+// Add pink and its invert
+$pink: #ff8080;
+$pink-invert: #fff;
+// Update the sans-serif font family
+$family-sans-serif: "Helvetica", "Arial", sans-serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $pink;
+$primary-invert: $pink-invert;
+
+// 4. Import the rest of Bulma
+*/
+
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+@import "./_utilities";
+
+@import "../node_modules/bulma/bulma";
+
+//GENERAL
+.body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: $family-primary;
+}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  @include for-phone {
+    width: 300px;
+  }
+  @include for-tablet-portrait {
+    width: 480px;
+  }
+
+  @include for-desktop {
+    width: 780px;
+  }
+  @include for-big-desktop {
+    width: 1500px;
+  }
+}
+
+.box-wrapper {
+  @include for-phone {
+    margin-top: 110px;
+  }
+  @include for-tablet-portrait {
+    margin-top: 110px;
+  }
+  @include for-desktop {
+    margin-top: 120px;
+  }
+  @include for-big-desktop {
+    margin-top: 120px;
+  }
+}
+
+// NAVBAR
+.navbar {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0px;
+  padding: 0 30px;
+  margin: 0 auto;
+  background-color: transparent;
+
+  @media (min-width: 1024px) {
+    background-color: $gray-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.navbar-item {
+  color: #fff;
+  font-weight: 700;
+  padding-right: 50px;
+  font-family: $family-primary;
+
+  @media (max-width: 1023px) {
+    width: calc(100% - 200px);
+  }
+
+  @include for-desktop {
+    font-size: 16px;
+  }
+  @include for-big-desktop {
+    font-size: 18px;
+  }
+}
+
+.navbar-burger {
+  display: none;
+  @media (max-width: 1023px) {
+    display: block;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    color: $redish !important;
+    left: auto !important;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.navbar a {
+  color: #fff;
+  padding: 10px 20px;
+  margin: 0 5px;
+  @media (max-width: 1023px) {
+    color: $redish !important;
+    left: 100px;
+  }
+}
+
+.navbar a:hover {
+  @media (min-width: 1024px) {
+    border-bottom: $redish 2px solid;
+    background-color: $gray-light;
+  }
+}
+.navbar a:visited {
+  @media (min-width: 1024px) {
+    color: #fff;
+    background-color: $gray-light;
+  }
+}
+
+.navbar-menu {
+  @media (min-width: 1024px) {
+    background-color: #707070;
+    width: 300px;
+  }
+
+  @media (max-width: 1023px) {
+    width: 100vw;
+    position: relative;
+    left: -30px;
+    padding-top: 30px;
+
+    &.is-active {
+      height: 100vh;
+    }
+  }
+
+  @media (max-width: 767px) {
+    left: -20px;
+    top: -20px;
+  }
+}
+
+.box-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+
+  @include for-tablet-portrait {
+    flex: 50%;
+  }
+  @include for-tablet-landscape {
+    flex: 50%;
+  }
+  @include for-desktop {
+    flex: 50%;
+  }
+  @include for-big-desktop {
+    flex: 50%;
+  }
+}
+
+.red-dots {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+
+  @include for-phone {
+    display: none;
+  }
+  @include for-tablet-portrait {
+    display: none;
+  }
+
+  @include for-desktop {
+    top: 77px;
+    right: 66px;
+    margin-top: -56px;
+  }
+  @include for-big-desktop {
+    top: 100px;
+    right: 54px;
+    margin-top: -93px;
+  }
+}
+
+.red-title {
+  background-color: $redish;
+  color: white;
+  font-family: $family-secondary;
+
+  @include for-phone {
+    font-size: 22px;
+    line-height: 20px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  @include for-tablet-portrait {
+    font-size: 25px;
+    line-height: 35px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  @include for-desktop {
+    font-size: 30px;
+    line-height: 44px;
+    margin-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  @include for-big-desktop {
+    font-size: 50px;
+    line-height: 75px;
+    margin-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+/* Flex columns */
+.flex-columns.flex-reverse .row {
+  flex-direction: row-reverse;
+}
+.flex-columns .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.flex-columns .column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.flex-columns .column .column-1,
+.flex-columns .column .column-2 {
+  height: 100%;
+}
+
+.flex-columns img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  @include for-phone {
+    width: 100%;
+    height: 87%;
+    margin-top: 50px;
+    margin-bottom: 0px;
+  }
+  @include for-tablet-portrait {
+    width: 94%;
+    height: 88%;
+    margin-top: 86px;
+    margin-bottom: 0;
+  }
+
+  @include for-desktop {
+    height: 82%;
+  }
+  @include for-big-desktop {
+    height: 82%;
+  }
+}
+
+.dots {
+  @include for-phone {
+    max-width: 5%;
+  }
+  @include for-desktop {
+    max-width: 13%;
+  }
+  @include for-big-desktop {
+    max-width: 15%;
+  }
+}
+.flex-columns .column-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: 120px;
+    padding: 20px;
+  }
+
+  .navbar a {
+    padding: 10px 10px;
+    margin: 0 3px;
+  }
+
+  .flex-items {
+    flex-direction: column;
+  }
+
+  .flex-columns .column,
+  .flex-grid .column {
+    flex: 100%;
+    max-width: 95%;
+    margin-top: 52px;
+    padding-bottom: 0px;
+  }
+
+  .flex-columns .column-2 {
+    padding-left: 30px;
+  }
+}
+
+.grey-rectangle {
+  background-color: $gray-light;
+  margin-top: 90px;
+  width: 100%;
+  height: 8px;
+
+  @include for-phone {
+    display: none;
+  }
+  @include for-tablet-portrait {
+    display: none;
+  }
+}
+
+.first-paragraph {
+  font-family: $family-primary;
+  color: #000;
+  @include for-phone {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 20px;
+  }
+  @include for-tablet-portrait {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 20px;
+  }
+
+  @include for-desktop {
+    font-size: 20px;
+    line-height: 35px;
+    margin-top: 30px;
+  }
+  @include for-big-desktop {
+    font-size: 22px;
+    line-height: 45px;
+    margin-top: 50px;
+  }
+}
+
+.wrapper {
+  @include for-phone {
+    max-width: 300px;
+    padding-left: 16px;
+  }
+  @include for-tablet-portrait {
+    width: 480px;
+  }
+  @include for-desktop {
+    width: 780px;
+  }
+  @include for-big-desktop {
+    width: 1010px;
+  }
+}
+
+.chef-title {
+  font-family: $family-secondary;
+  margin: auto;
+  font-weight: 700;
+  color: #000;
+  font-style: italic;
+  @include for-phone {
+    font-size: 30px;
+    line-height: 80px;
+    padding-left: 40px;
+    padding-right: 10px;
+  }
+  @include for-tablet-portrait {
+    font-size: 22px;
+    line-height: 30px;
+    padding-left: 35px;
+    padding-top: 20px;
+  }
+
+  @include for-desktop {
+    font-size: 40px;
+    line-height: 80px;
+    padding-left: 150px;
+  }
+  @include for-big-desktop {
+    font-size: 48px;
+    line-height: 80px;
+    padding-left: 40px;
+  }
+}
+
+.second-paragraph {
+  font-family: $family-primary;
+  color: #000;
+  @include for-phone {
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 40px;
+    padding-right: 10px;
+  }
+  @include for-tablet-portrait {
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+  @include for-desktop {
+    font-size: 20px;
+    line-height: 35px;
+    margin-top: 18px;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  @include for-big-desktop {
+    font-size: 22px;
+    line-height: 45px;
+    padding-left: 40px;
+  }
+}
+.paragraph-span {
+  @include for-phone {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  @include for-tablet-portrait {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  @include for-desktop {
+    font-size: 22px;
+    line-height: 35px;
+    margin-top: 30px;
+  }
+  @include for-big-desktop {
+    font-size: 30px;
+    line-height: 45px;
+  }
+}
+.third-paragraph {
+  font-family: $family-secondary;
+  color: #707070;
+  font-weight: 700;
+  font-style: italic;
+
+  @include for-phone {
+    font-size: 18px;
+    line-height: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 20px;
+  }
+  @include for-tablet-portrait {
+    font-size: 18px;
+    line-height: 25px;
+    margin-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @include for-desktop {
+    font-size: 25px;
+    line-height: 40px;
+    margin-top: 18px;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  @include for-big-desktop {
+    font-size: 30px;
+    line-height: 60px;
+    margin-top: 50px;
+    padding-left: 40px;
+  }
+}
+.forth-paragraph {
+  font-family: $family-secondary;
+  color: #000;
+  @include for-phone {
+    font-size: 18px;
+    line-height: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+  @include for-tablet-portrait {
+    font-size: 18px;
+    line-height: 25px;
+    margin-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 50px;
+  }
+
+  @include for-desktop {
+    font-size: 25px;
+    line-height: 40px;
+    margin-top: 40px;
+    margin-bottom: 90px;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  @include for-big-desktop {
+    font-size: 30px;
+    line-height: 60px;
+    margin-top: 50px;
+    margin-bottom: 130px;
+    padding-left: 40px;
+  }
+}
+.paragraph-span-forth {
+  font-family: $family-secondary;
+  color: #000;
+  font-weight: 700;
+  font-style: italic;
+  @include for-phone {
+    font-size: 20px;
+    line-height: 25px;
+  }
+  @include for-tablet-portrait {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  @include for-desktop {
+    font-size: 25px;
+    line-height: 40px;
+  }
+  @include for-big-desktop {
+    font-size: 48px;
+    line-height: 60px;
+  }
+}
+
+.box {
+  margin: auto;
+}
+
+.dot-box {
+  display: block;
+  width: 10%;
+  @include for-phone {
+    margin: -10px auto;
+  }
+  @include for-tablet-portrait {
+    margin: -15px auto;
+  }
+
+  @include for-desktop {
+    margin: -60px auto;
+  }
+  @include for-big-desktop {
+    margin: -60px auto;
+  }
+}
+
+.dot-box2 {
+  display: block;
+  width: 10%;
+  @include for-phone {
+    margin: -39px auto;
+  }
+  @include for-tablet-portrait {
+    margin: -59px auto;
+  }
+
+  @include for-desktop {
+    margin: -60px auto;
+  }
+  @include for-big-desktop {
+    margin: -60px auto;
+  }
+}
+
+.restaurants-name {
+  font-family: $family-secondary;
+  color: #000;
+  @include for-phone {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  @include for-tablet-portrait {
+    margin-top: 25px;
+    font-size: 18px;
+    line-height: 5px;
+    margin-bottom: 50px;
+  }
+
+  @include for-desktop {
+    font-size: 25px;
+    line-height: 3px;
+    margin-top: 65px;
+    margin-bottom: 50px;
+  }
+  @include for-big-desktop {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-size: 50px;
+    line-height: 64px;
+  }
+}
+
+.form {
+  @include for-phone {
+    margin-top: 70px;
+  }
+  @include for-tablet-portrait {
+    margin-top: 150px;
+  }
+
+  @include for-desktop {
+    margin-top: 150px;
+  }
+  @include for-big-desktop {
+    margin-top: 150px;
+  }
+}
+
+.box2 {
+  background-color: #707070;
+}
+
+.form-title {
+  color: #fff;
+  font-family: $family-secondary;
+  @include for-phone {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  @include for-tablet-portrait {
+    font-size: 18px;
+    line-height: 5px;
+  }
+
+  @include for-desktop {
+    font-size: 30px;
+    line-height: 88px;
+    padding: 20px;
+  }
+  @include for-big-desktop {
+    padding: 30px;
+    font-size: 50px;
+    line-height: 88px;
+  }
+}
+
+#prijava input {
+  height: 40px;
+  border: #f5f5f5 1px solid;
+}
+
+.input-title {
+  color: #fff;
+  font-family: $family-secondary;
+  @include for-phone {
+    font-size: 14px;
+    line-height: 27px;
+  }
+  @include for-tablet-portrait {
+    font-size: 14px;
+    line-height: 35px;
+  }
+
+  @include for-desktop {
+    font-size: 25px;
+    line-height: 88px;
+  }
+  @include for-big-desktop {
+    font-size: 30px;
+    line-height: 70px;
+  }
+}
+
+.textarea__wrapper {
+  display: flex;
+  color: #fff;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.box3 {
+  @include for-phone {
+  }
+  @include for-tablet-portrait {
+  }
+
+  @include for-desktop {
+    margin-top: 100px;
+  }
+  @include for-big-desktop {
+    margin-top: 100px;
+  }
+}
+
+.third-paragraph2 {
+  font-family: $family-secondary;
+  color: #707070;
+  font-weight: 700;
+  font-style: italic;
+
+  @include for-phone {
+    font-size: 14px;
+    line-height: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 20px;
+  }
+  @include for-tablet-portrait {
+    font-size: 18px;
+    line-height: 25px;
+    margin-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @include for-desktop {
+    font-size: 25px;
+    line-height: 40px;
+    margin-top: 80px;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  @include for-big-desktop {
+    font-size: 30px;
+    line-height: 60px;
+    margin-top: 50px;
+    padding-left: 40px;
+  }
+}
+
+textarea {
+  @include for-phone {
+    height: 300px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  @include for-tablet-portrait {
+    height: 300px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  @include for-desktop {
+    height: 400px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  @include for-big-desktop {
+    height: 500px;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+// button
+.btn {
+  background-color: $redish;
+  color: #fff;
+  font-family: $family-third;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  margin: auto;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.4);
+  border-color: $redish;
+
+  @include for-phone {
+    border-radius: 27px;
+    border: 1px solid $redish;
+    font-size: 14px;
+    line-height: 41px;
+    text-align: center;
+    padding: 0 40px;
+    margin-bottom: 40px;
+    width: auto;
+  }
+
+  @include for-tablet-portrait {
+    line-height: 40px;
+    border-radius: 27px;
+    border: 2px solid $redish;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0 40px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  @include for-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid $redish;
+    margin-bottom: 115px;
+    margin-top: 50px;
+    font-size: 18px;
+    padding: 34px 90px;
+  }
+
+  @include for-big-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid $redish;
+    margin-bottom: 110px;
+    margin-top: 50px;
+    font-size: 18px;
+    padding: 34px 90px;
+  }
+}
+
+.btn:hover {
+  color: $redish;
+  background-color: white;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.4);
+  border-color: white;
+  cursor: pointer;
+}
+
+// pravila privatnosti
+.pravila {
+  color: #707070;
+  font-family: $family-primary;
+
+  &__checkbox {
+    @include for-phone {
+      margin: 3px 20px 0 90px;
+    }
+
+    @include for-tablet-portrait {
+      margin: 0px 84px 0 186px;
+    }
+
+    @include for-desktop {
+      margin: 5px 20px 0 113px;
+    }
+
+    @include for-big-desktop {
+      margin: 5px 20px 0 0;
+    }
+  }
+
+  &__wrapper {
+    // padding-top: 100px;
+
+    @media screen and (min-width: 1200px) and (max-width: 2560px) and (-webkit-min-device-pixel-ratio: 1) {
+      padding-top: 100px;
+    }
+
+    /* Tablet Portrait */
+    @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+      //   padding-top: 100px;
+    }
+
+    /* Tablet Landscape */
+    @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+      padding-top: 100px;
+    }
+
+    /*mobile*/
+    @media (max-width: 767px) {
+      padding-bottom: 40px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) and (max-width: 2560px) and (-webkit-min-device-pixel-ratio: 1) {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  /* Tablet Portrait */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  /* Tablet Landscape */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  /*mobile*/
+  @media (max-width: 767px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+input[type="checkbox"] {
+  @include for-phone {
+    height: 30px;
+    width: 30px;
+  }
+
+  @include for-tablet-portrait {
+    height: 33px;
+    width: 33px;
+  }
+
+  @include for-desktop {
+    height: 44px;
+    width: 44px;
+  }
+
+  @include for-big-desktop {
+    height: 44px;
+    width: 44px;
+  }
+}
+
+.link-pravila {
+  color: #000;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: $redish;
+}
+
+.pravila-title {
+  font-family: $family-secondary;
+  color: $gray-dark;
+
+  @include for-phone {
+    font-size: 14px;
+    line-height: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  @include for-tablet-portrait {
+    font-size: 18px;
+    line-height: 25px;
+    margin-top: 30px;
+  }
+
+  @include for-desktop {
+    font-size: 25px;
+    line-height: 40px;
+    margin-top: 80px;
+  }
+  @include for-big-desktop {
+    font-size: 30px;
+    line-height: 60px;
+    margin-top: 50px;
+  }
+}
+
+.o-restoranima {
+  font-family: $family-secondary;
+  color: #000;
+  font-weight: 700;
+
+  @include for-phone {
+    font-size: 16px;
+    line-height: 30px;
+    margin-top: 40px;
+  }
+  @include for-tablet-portrait {
+    font-size: 25px;
+    line-height: 25px;
+    margin-top: 60px;
+  }
+
+  @include for-desktop {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 80px;
+  }
+  @include for-big-desktop {
+    font-size: 40px;
+    line-height: 40px;
+    margin-top: 100px;
+  }
+}
+
+.flex-columns2 .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.flex-columns2 .column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.flex-columns2 .column .column-1,
+.flex-columns .column .column-2 {
+  height: 100%;
+}
+
+.flex-columns2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  @include for-phone {
+    height: 100%;
+  }
+  @include for-tablet-portrait {
+    height: 88%;
+  }
+
+  @include for-desktop {
+    height: 100%;
+  }
+  @include for-big-desktop {
+    height: 100%;
+  }
+}
+
+.restoran_dots {
+  @include for-phone {
+  }
+  @include for-tablet-portrait {
+  }
+
+  @include for-desktop {
+  }
+  @include for-big-desktop {
+    max-width: 20%;
+  }
+}
+
+.card {
+  @include for-phone {
+    max-width: unset;
+    width: calc(100% + 41px);
+    height: 41%;
+    top: 21px;
+    left: -40px;
+  }
+  @include for-tablet-portrait {
+    max-width: unset;
+    width: calc(100% + 71px);
+    height: 44%;
+    top: 49px;
+    left: -66px;
+  }
+
+  @include for-desktop {
+    max-width: unset;
+    width: calc(100% + 51px);
+    top: 49px;
+    left: -66px;
+    padding: 3px;
+  }
+  @include for-big-desktop {
+    max-width: unset;
+    width: calc(100% + 79px);
+    top: 135px;
+    left: -66px;
+    padding: 16px;
+  }
+}
+
+.content {
+  font-family: $family-secondary;
+  color: #000;
+  @include for-phone {
+    font-size: 18px;
+    line-height: 30px;
+    padding-bottom: 20px;
+    font-weight: 700;
+  }
+  @include for-tablet-portrait {
+    font-size: 25px;
+    line-height: 50px;
+  }
+
+  @include for-desktop {
+    font-size: 50px;
+    line-height: 88px;
+  }
+  @include for-big-desktop {
+    font-size: 80px;
+    line-height: 88px;
+  }
+}
+
+// button
+.btn_yellow {
+  background-color: #f2ab39;
+  color: #fff;
+  font-family: $family-third;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  margin: auto;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.4);
+  border-color: #f2ab39;
+
+  @include for-phone {
+    border-radius: 27px;
+    border: 1px solid #f2ab39;
+    font-size: 14px;
+    line-height: 41px;
+    text-align: center;
+    padding: 0 14px;
+    width: auto;
+    position: relative;
+    top: 36px;
+  }
+
+  @include for-tablet-portrait {
+    line-height: 40px;
+    border-radius: 27px;
+    border: 2px solid #f2ab39;
+    margin-top: 40px;
+    padding: 0 40px;
+    font-size: 12px;
+    text-align: center;
+    position: relative;
+    top: 18px;
+    left: 67px;
+  }
+
+  @include for-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid #f2ab39;
+    position: relative;
+    top: 68px;
+    left: 134px;
+    font-size: 16px;
+    padding: 22px 58px;
+  }
+
+  @include for-big-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid #f2ab39;
+    margin-bottom: 110px;
+    margin-top: 176px;
+    font-size: 18px;
+    padding: 25px 69px;
+    margin-left: 222px;
+  }
+}
+
+.btn_yellow:hover {
+  color: #f2ab39;
+  background-color: white;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.4);
+  border-color: white;
+  cursor: pointer;
+}
+
+.btn_red {
+  background-color: $redish;
+  color: #fff;
+  font-family: $family-third;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  margin: auto;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.4);
+  border-color: $redish;
+
+  @include for-phone {
+    border-radius: 27px;
+    border: 1px solid $redish;
+    font-size: 14px;
+    line-height: 41px;
+    text-align: center;
+    padding: 0 14px;
+    width: auto;
+    position: relative;
+    top: 40px;
+  }
+
+  @include for-tablet-portrait {
+    line-height: 40px;
+    border-radius: 27px;
+    border: 2px solid $redish;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0 40px;
+    font-size: 12px;
+    text-align: center;
+    position: relative;
+    top: 31px;
+    left: 61px;
+  }
+
+  @include for-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid $redish;
+    position: relative;
+    top: 76px;
+    left: 134px;
+    font-size: 16px;
+    padding: 22px 58px;
+  }
+
+  @include for-big-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid $redish;
+    margin-bottom: 110px;
+    margin-top: 176px;
+    font-size: 18px;
+    padding: 25px 69px;
+    margin-left: 222px;
+  }
+}
+
+.btn_red:hover {
+  color: $redish;
+  background-color: white;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.4);
+  border-color: white;
+  cursor: pointer;
+}
+
+.btn_purple {
+  background-color: #8a83ae;
+  color: #fff;
+  font-family: $family-third;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  margin: auto;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.4);
+  border-color: #8a83ae;
+
+  @include for-phone {
+    border-radius: 27px;
+    border: 1px solid #8a83ae;
+    font-size: 14px;
+    line-height: 41px;
+    text-align: center;
+    padding: 0 15px;
+    width: auto;
+    position: relative;
+    top: 35px;
+    left: 8px;
+  }
+
+  @include for-tablet-portrait {
+    line-height: 40px;
+    border-radius: 27px;
+    border: 2px solid #8a83ae;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0 40px;
+    font-size: 12px;
+    text-align: center;
+    position: relative;
+    top: 33px;
+    left: 62px;
+  }
+
+  @include for-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid #8a83ae;
+    position: relative;
+    top: 81px;
+    left: 134px;
+    font-size: 16px;
+    padding: 22px 58px;
+  }
+
+  @include for-big-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid #8a83ae;
+    margin-bottom: 110px;
+    margin-top: 176px;
+    font-size: 18px;
+    padding: 25px 69px;
+    margin-left: 224px;
+  }
+}
+
+.btn_purple:hover {
+  color: #8a83ae;
+  background-color: white;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.4);
+  border-color: white;
+  cursor: pointer;
+}
+
+.btn_purple2 {
+  background-color: #8a83ae;
+  color: #fff;
+  font-family: $family-third;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  margin: auto;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.4);
+  border-color: #8a83ae;
+
+  @include for-phone {
+    border-radius: 27px;
+    border: 1px solid #8a83ae;
+    font-size: 14px;
+    line-height: 41px;
+    text-align: center;
+    padding: 0 18px;
+    width: auto;
+    position: relative;
+    top: 35px;
+    left: 24px;
+  }
+
+  @include for-tablet-portrait {
+    line-height: 40px;
+    border-radius: 27px;
+    border: 2px solid #8a83ae;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0 40px;
+    font-size: 12px;
+    text-align: center;
+    position: relative;
+    top: 32px;
+    left: 62px;
+  }
+
+  @include for-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid #8a83ae;
+    position: relative;
+    top: 76px;
+    left: 134px;
+    font-size: 16px;
+    padding: 22px 58px;
+  }
+
+  @include for-big-desktop {
+    line-height: 10px;
+    border-radius: 35px;
+    border: 3px solid #8a83ae;
+    margin-bottom: 110px;
+    margin-top: 176px;
+    font-size: 18px;
+    padding: 25px 69px;
+    margin-left: 263px;
+  }
+}
+
+.btn_purple2:hover {
+  color: #8a83ae;
+  background-color: white;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.4);
+  border-color: white;
+  cursor: pointer;
+}
+
+.tocke {
+  @include for-phone {
+    max-width: 15%;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 57px;
+    left: 91px;
+    z-index: 2;
+  }
+
+  @include for-tablet-portrait {
+    max-width: 15%;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 86px;
+    left: 144px;
+    z-index: 2;
+  }
+
+  @include for-desktop {
+    max-width: 15%;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 90px;
+    left: 220px;
+    z-index: 2;
+  }
+
+  @include for-big-desktop {
+    max-width: 20%;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 184px;
+    left: 289px;
+    z-index: 2;
+  }
+}
+
+.opis_restorana {
+  font-family: $family-primary;
+  color: #000;
+  @include for-phone {
+    font-size: 14px;
+    line-height: 30px;
+    padding-left: 9px;
+    padding-right: 20px;
+  }
+  @include for-tablet-portrait {
+    font-size: 14px;
+    line-height: 22px;
+    padding-left: 8px;
+    // padding-right: 20px;
+  }
+
+  @include for-desktop {
+    font-size: 16px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 21px;
+    margin-bottom: 15px;
+  }
+  @include for-big-desktop {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 25px;
+    line-height: 40px;
+    padding-left: 7px;
+  }
+}
+
+/* Flex grid */
+.flex-grid .row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+
+  @include for-phone {
+    margin-top: 38px;
+  }
+
+  @include for-tablet-portrait {
+    margin-top: 20px;
+  }
+}
+
+.flex-grid .column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+// error mesage, response message
+
+#error-msg,
+#response-msg {
+  color: red;
+  font-family: $family-primary;
+  font-weight: 600;
+
+  @media screen and (min-device-width: 1200px) and (max-device-width: 2560px) and (-webkit-min-device-pixel-ratio: 1) {
+    font-size: 25px;
+    line-height: 32px;
+  }
+
+  /* Tablet Portrait */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+    font-size: 18px;
+    line-height: 18px;
+    margin-top: 30px;
+  }
+
+  /* Tablet Landscape */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+    font-size: 20px;
+    line-height: 18px;
+  }
+
+  /*mobile*/
+  @media (max-width: 767px) {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+}
+
+#response-msg {
+  color: red;
+
+  @media screen and (min-device-width: 1200px) and (max-device-width: 2560px) and (-webkit-min-device-pixel-ratio: 1) {
+    margin-top: 50px;
+    margin-bottom: 93px;
+  }
+
+  /* Tablet Portrait */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+    margin-top: 50px;
+    margin-bottom: 93px;
+  }
+
+  /* Tablet Landscape */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+  }
+
+  /*mobile*/
+  @media (max-width: 767px) {
+  }
+}
+
+//FOOTER
+.footer {
+  background-color: $white;
+}
+.footer-text {
+  @include for-phone {
+    font-size: 14px;
+    line-height: 25px;
+  }
+  @include for-tablet-portrait {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @include for-desktop {
+    font-size: 16px;
+    line-height: 30px;
+  }
+  @include for-big-desktop {
+    font-size: 18px;
+    line-height: 40px;
+  }
+}
+.container-footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.footer-row {
+  display: inline-block;
+  padding: 20px;
+}
+
+.logo {
+  height: 41px;
+  margin-bottom: 20px;
+}
+
+.footer-row img {
+  width: 12%;
+  height: 12%;
+  padding: 3px;
+}

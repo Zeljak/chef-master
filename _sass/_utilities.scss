@@ -1,0 +1,43 @@
+//** MEDIA QUERIES **
+
+@mixin for-phone {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait {
+  @media (min-width: 501px) and (max-width: 900px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-desktop {
+  @media (min-width: 901px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin for-big-desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+//** VARIABLES **
+
+$fullhd: 1200px + (2 * $gap);
+$section-padding-desktop: 3rem 0;
+
+//colors
+$gray-light: #707070;
+$gray-dark: #656565;
+$redish: #c94f44;
+
+//font-family
+$family-primary: "Montserrat", sans-serif;
+$family-secondary: "Playfair Display", serif;
+$family-third: "Roboto", sans-serif;
+$family-forth: "Urbanist", sans-serif;
